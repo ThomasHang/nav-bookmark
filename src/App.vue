@@ -1,30 +1,170 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <a-layout>
+    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+      <div class="logo">
+        哈哈哈
+      </div>
+      <a-menu v-model:selectedKeys="state.selectedKeys" mode="inline" :open-keys="state.openKeys" :items="items"
+        @openChange="onOpenChange"></a-menu>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header style="background: #fff; padding: 0">
+        <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
+        <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+      </a-layout-header>
+      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+        <div>博物展览</div>
+        <NavItem msg="哈哈哈" />
+        <NavItem msg="哈哈哈1" />
+
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script lang="ts" setup>
+import { ref, VueElement, h, reactive } from 'vue';
+import {
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  MailOutlined, AppstoreOutlined, SettingOutlined
+} from '@ant-design/icons-vue';
+import { ItemType } from 'ant-design-vue';
+import NavItem from './components/NavItem.vue'
+
+// const selectedKeys = ref<string[]>(['1']);
+const collapsed = ref<boolean>(false);
+
+function getItem(
+  label: VueElement | string,
+  key: string,
+  icon?: any,
+  children?: ItemType[],
+  type?: 'group',
+): ItemType {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  } as ItemType;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+const items = ref([
+  {
+    key: '1',
+    icon: () => h(MailOutlined),
+    label: '常用推荐',
+    title: 'Navigation One',
+  },
+
+  {
+    key: 'sub1',
+    icon: () => h(AppstoreOutlined),
+    label: 'Navigation Three',
+    title: 'Navigation Three',
+    children: [
+      {
+        key: '3',
+        label: 'Option 3',
+        title: 'Option 3',
+      },
+      {
+        key: '4',
+        label: 'Option 4',
+        title: 'Option 4',
+      },
+      {
+        key: 'sub1-2',
+        label: 'Submenu',
+        title: 'Submenu',
+        children: [
+          {
+            key: '5',
+            label: 'Option 5',
+            title: 'Option 5',
+          },
+          {
+            key: '6',
+            label: 'Option 6',
+            title: 'Option 6',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub2',
+    icon: () => h(SettingOutlined),
+    label: 'Navigation Four',
+    title: 'Navigation Four',
+    children: [
+      {
+        key: '7',
+        label: 'Option 7',
+        title: 'Option 7',
+      },
+      {
+        key: '8',
+        label: 'Option 8',
+        title: 'Option 8',
+      },
+      {
+        key: '9',
+        label: 'Option 9',
+        title: 'Option 9',
+      },
+      {
+        key: '10',
+        label: 'Option 10',
+        title: 'Option 10',
+      },
+    ],
+  },
+]);
+
+const state = reactive({
+  rootSubmenuKeys: ['sub1', 'sub2', 'sub4'],
+  openKeys: ['sub1'],
+  selectedKeys: [],
+});
+const onOpenChange = (openKeys: string[]) => {
+  const latestOpenKey = openKeys.find(key => state.openKeys.indexOf(key) === -1);
+  if (state.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+    state.openKeys = openKeys;
+  } else {
+    state.openKeys = latestOpenKey ? [latestOpenKey] : [];
+  }
+};
+</script>
+<style>
+#components-layout-demo-custom-trigger .trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+#components-layout-demo-custom-trigger .trigger:hover {
+  color: #580e0e;
+}
+
+#components-layout-demo-custom-trigger .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 16px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.ant-layout-sider-children {
+  background-color: #fff;
 }
 </style>
