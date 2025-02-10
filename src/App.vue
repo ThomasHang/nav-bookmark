@@ -13,10 +13,11 @@
         <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
-        <div>博物展览</div>
-        <NavItem msg="哈哈哈" />
-        <NavItem msg="哈哈哈1" />
+        <NavCard title="博物展览" :items="navItems" />
+        <NavCard title="地图" :items="mapItems" />
+        <NavCard title="翻译" :items="translateItems" />
 
+        <Icon name="temple-of-heaven" size="24px" />
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -33,7 +34,9 @@ import {
   MailOutlined, AppstoreOutlined, SettingOutlined
 } from '@ant-design/icons-vue';
 import { ItemType } from 'ant-design-vue';
-import NavItem from './components/NavItem.vue'
+import Icon from './components/Icon.vue'
+import NavCard from './components/NavCard.vue'
+import { navItems, mapItems,translateItems } from './data/navItems'
 
 // const selectedKeys = ref<string[]>(['1']);
 const collapsed = ref<boolean>(false);
@@ -140,6 +143,7 @@ const onOpenChange = (openKeys: string[]) => {
     state.openKeys = latestOpenKey ? [latestOpenKey] : [];
   }
 };
+
 </script>
 <style>
 #components-layout-demo-custom-trigger .trigger {
