@@ -12,12 +12,18 @@
         <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
         <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
       </a-layout-header>
-      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px', overflowY: 'auto' }">
         <NavCard title="博物展览" :items="navItems" />
+        <NavCard title="AI" :items="aiItems" />
+        <NavCard title="UI框架" :items="uiFrameItems" />
+
         <NavCard title="地图" :items="mapItems" />
         <NavCard title="翻译" :items="translateItems" />
+        <NavCard title="语言" :items="languageItems" />
+        <NavCard title="游戏" :items="gameItems" />
+        <NavCard title="电影" :items="movieItems" />
 
-        <Icon name="temple-of-heaven" size="24px" />
+        <!-- <Icon name="temple-of-heaven" size="24px" /> -->
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -36,7 +42,7 @@ import {
 import { ItemType } from 'ant-design-vue';
 import Icon from './components/Icon.vue'
 import NavCard from './components/NavCard.vue'
-import { navItems, mapItems,translateItems } from './data/navItems'
+import { navItems, mapItems, translateItems, languageItems, gameItems, aiItems, movieItems, uiFrameItems } from './data/navItems'
 
 // const selectedKeys = ref<string[]>(['1']);
 const collapsed = ref<boolean>(false);
