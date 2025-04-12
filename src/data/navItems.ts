@@ -1,6 +1,7 @@
 export interface NavItemData {
   path: string;
-  imgSrc: string;
+  imgSrc?: string;
+  iconName?: string;
   text: string;
   desc: string;
 }
@@ -47,14 +48,20 @@ export const languageItems: NavItemData[] = [
 export const translateItems: NavItemData[] = [
   {
     path: "https://translate.google.com/",
-    imgSrc: "/assets/museum/egypt",
+    iconName: "google",
     text: "google",
     desc: "翻译",
   },
   {
     path: "https://www.bing.com/translator",
-    imgSrc: "/assets/museum/egypt",
+    iconName: "icon-gugefanyi",
     text: "bing",
+    desc: "翻译",
+  },
+  {
+    path: "https://translate.volcengine.com/",
+    imgSrc: "/assets/languages/huoshan.svg",
+    text: "火山翻译",
     desc: "翻译",
   },
 ];
@@ -92,6 +99,18 @@ export const movieItems: NavItemData[] = [
     text: "爱壹帆",
     desc: "海量高清视频观看",
   },
+  {
+    path: "https://panghuys.com/",
+    imgSrc: "",
+    text: "胖虎影视",
+    desc: "",
+  },
+  {
+    path: "https://www.duse1.com/",
+    imgSrc: "",
+    text: "91毒蛇电影",
+    desc: "",
+  },
 ];
 
 export const uiFrameItems: NavItemData[] = [
@@ -111,13 +130,25 @@ export const uiFrameItems: NavItemData[] = [
     text: "semi",
     path: "https://semi.design/zh-CN/",
     imgSrc: "/assets/ui/semi-design.svg",
-    desc: "",
+    desc: "抖音团队",
   },
   {
     text: "Alibaba Formily",
     path: "https://formilyjs.org/zh-CN",
     imgSrc: "",
-    desc: "",
+    desc: "阿里",
+  },
+  {
+    text: "Arco.design",
+    path: "https://arco.design/vue/component/icon",
+    imgSrc: "",
+    desc: "字节跳动",
+  },
+  {
+    text: "Tdesign",
+    path: "https://tdesign.tencent.com/",
+    imgSrc: "",
+    desc: "tencent",
   },
 ];
 
@@ -131,3 +162,33 @@ export const cssItems: NavItemData[] = [
   },
 ];
 export const vueItems: NavItemData[] = [];
+
+export const githubItems: NavItemData[] = [
+  {
+    text: "github",
+    path: "https://github.com/",
+    imgSrc: "",
+    desc: "",
+  },
+];
+
+export const overTheWallItems: NavItemData[] = [
+  {
+    text: "ikuuu",
+    path: "https://ikuuu.one/auth/login",
+    imgSrc: "",
+    desc: "",
+  },
+  {
+    text: "一元机场",
+    path: "https://xn--4gq62f52gdss.com/#/login",
+    imgSrc: "",
+    desc: "",
+  },
+  {
+    text: "shadowrocket",
+    path: "https://portal.shadowsocks.nz/store/cloud",
+    imgSrc: "",
+    desc: "",
+  },
+];

@@ -13,12 +13,12 @@ defineProps<{
 </script>
 
 <style scoped>
-@import url('//at.alicdn.com/t/c/font_4823877_w394teoctvm.css');
-/* 替换为你的iconfont项目地址 */
+@import url('//at.alicdn.com/t/c/font_4823877_sd3hyt6fdo.css');
+/* 确保这个 URL 是你的 iconfont 项目的正确地址 */
 
 .iconfont {
     font-family: 'iconfont' !important;
-    font-size: 16px;
+    font-size: 20px;  /* 修改默认大小 */
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
